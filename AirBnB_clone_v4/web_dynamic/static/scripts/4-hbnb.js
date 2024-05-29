@@ -49,6 +49,7 @@ $(document).ready(function () {
   // Send a POST request to the places_search endpoint
   // Function to fetch places data and update the DOM
   function fetchPlaces(data) {
+    // Send a POST request to the places_search endpoint
     $.post({
       url: "http://127.0.0.1:5001/api/v1/places_search/",
       contentType: 'application/json',
@@ -57,26 +58,32 @@ $(document).ready(function () {
         $('section.places').empty();  // Clear the section before adding new places
 
         data.forEach(place => {
+          // Create an article element for each place
           const article = $('<article></article>');
 
+          // Create the title box with the name and price of the place
           const titleBox = $('<div class="title_box"></div>');
           const name = $('<h2></h2>').text(place.name);
           const price = $('<div class="price_by_night"></div>').text(`$${place.price_by_night}`);
           titleBox.append(name, price);
 
+          // Create the information box with max_guest, number_rooms, and number_bathrooms
           const information = $('<div class="information"></div>');
           const maxGuest = $('<div class="max_guest"></div>').text(`${place.max_guest} Guests`);
           const numRooms = $('<div class="number_rooms"></div>').text(`${place.number_rooms} Bedrooms`);
           const numBathrooms = $('<div class="number_bathrooms"></div>').text(`${place.number_bathrooms} Bathrooms`);
           information.append(maxGuest, numRooms, numBathrooms);
 
+          // Create the description box with the description of the place
           const description = $('<div class="description"></div>').html(place.description);
 
+          // Append the title box, information, and description to the article
           article.append(titleBox, information, description);
           $('section.places').append(article);
         });
       },
       error: function (error) {
+        // Log error to console if there is an error fetching places
         console.error('Error fetching places:', error);
       }
     });
