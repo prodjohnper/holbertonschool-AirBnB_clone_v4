@@ -67,9 +67,9 @@ $(document).ready(function () {
 
         // Create the info div with the max guests, num of rooms, and num of bathrooms
         const information = $('<div class="information"></div>');
-        const maxGuest = $('<div class="max_guest"></div>').text(`${place.max_guest} Guests`);
-        const numRooms = $('<div class="number_rooms"></div>').text(`${place.number_rooms} Bedrooms`);
-        const numBathrooms = $('<div class="number_bathrooms"></div>').text(`${place.number_bathrooms} Bathrooms`);
+        const maxGuest = $('<div class="max_guest"></div>').text(`${place.max_guest} Guest${place.max_guest !== 1 ? 's' : ''}`);
+        const numRooms = $('<div class="number_rooms"></div>').text(`${place.number_rooms} Bedrooms${place.number_rooms !== 1 ? 's' : ''}`);
+        const numBathrooms = $('<div class="number_bathrooms"></div>').text(`${place.number_bathrooms} Bathrooms${place.number_bathrooms !== 1 ? 's' : ''}`);
         information.append(maxGuest, numRooms, numBathrooms);
 
         // Create the description div with the description of the place
